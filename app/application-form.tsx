@@ -1,9 +1,9 @@
-import { getCourses, saveApplication } from "./actions";
+import { saveApplication } from "./actions";
 import UploadButton from "./upload-button";
 
 
-export default function ApplicationForm() {
-   const courses = getCourses();
+export default function ApplicationForm({courses}: {courses: any}) {
+  
    console.log(222, courses);
     return (
         <div className="p-4">
@@ -83,8 +83,9 @@ export default function ApplicationForm() {
                  <div>
                     <label htmlFor="course1" className="block text-sm font-medium text-gray-700">Course willing to study (Preference 1)</label>
                     <select id="course1" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
-                        <option value="select">Select Course</option>
-                        <option value="Medical">Medical</option> 
+                        {courses && courses.map((course: any) => (
+                            <option key={course.id} value={course.name}>{course.name}</option>
+                        ))}
                         </select>   
                 </div>
                  <div>
