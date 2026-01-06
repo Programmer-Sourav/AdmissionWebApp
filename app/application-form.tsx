@@ -1,9 +1,10 @@
-import { saveApplication } from "./actions";
+import { getCourses, saveApplication } from "./actions";
 import UploadButton from "./upload-button";
 
 
 export default function ApplicationForm() {
-   
+   const courses = getCourses();
+   console.log(222, courses);
     return (
         <div className="p-4">
             <h1 className="text-2xl font-bold mb-4">Application Form</h1>

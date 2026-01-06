@@ -56,13 +56,16 @@ export async function saveApplication(data: FormData){
 }
 
 export async function getCourses(){
-  const response = await fetch('https://www.travelsawari.com/index_course.php/available_courses_by_stream', {
-    method: 'GET',
-    headers: { 
-        authorization: `Bearer ${process.env.API_KEY}`,
-        'Content-Type': 'application/json',
-    },  
+  let courses = [];
+  try{
+  const response = await fetch('https://www.travelsawari.com/index_course.php/get_annoucement', {
+    method: 'GET' 
 });
-const courses = await response.json();
+courses = await response.json();
+  }
+  catch(err){
+    console.log("Error fetching courses:", err);
+    return [];
+  }
 return courses;
 }

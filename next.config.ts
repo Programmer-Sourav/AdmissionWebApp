@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   experimental: {
-    serverActions: {  },
+    serverActions: { allowedOrigins: ['https://www.travelsawari.com'] },
   },
 };
 
